@@ -26,7 +26,55 @@ While scaling, only one function app instance can be created every 10 seconds, f
 
 ## Bindings
 
-Bindings know how to talk to different services, which means you don't have to write code in your function to connect to data sources and manage connections. Each binding has a direction - your code reads data from input bindings, and writes data to output bindings. Each function can have zero or more bindings to manage the input and output data processed by the function.
+1. **Input binding** - An input binding is a connection to a data source. Our function can read data from these inputs.
+
+2. **Output binding** - An output binding is a connection to a data destination. Our function can write data to these destinations.
+
+There are also triggers, which are special types of input bindings that cause a function to execute. An Azure Event Grid notification can be configured as a trigger. A binding type can be used as an input, an output or both. For example, a function can write to Azure Blob Storage output binding, but a blob storage update could trigger another function.
+
+### Binding Properties
+
+Three properties are required in all bindings. You may have to supply additional properties based on the type of binding and storage you are using.
+
+1. **Name** - Defines the function parameter through which you access the data. In a queue input binding, this is the name of the function parameter that receives the queue message content.
+
+2. **Type** - Identifies the type of binding, i.e., the type of data or service we want to interact with.
+
+3. **Direction** - Indicates the direction data is flowing, i.e., is it an input or output binding?
+
+4. **Connection** (Not required by all bindings) - Provides the name of an app setting key that contains the connection string. Bindings use connection strings stored in app settings to keep secrets out of the function code. This makes your code more configurable and secure.
+
+A binding is configured in your function's configuration file, which is named *function.json* and lives in the same folder as your function code.
+
+```json
+{
+    "name": "headshotBlobIn",
+    "type": "blob",
+    "path": "thumbnail-images/{filename}",
+    "connection": "HeadshotStorageConnection",
+    "direction": "in" // Means this is an input binding
+},
+{
+    "name": "headshotBlobOut",
+    "type": "blob",
+    "path": "thumbnail-images/{filename}",
+    "connection": "HeadshotStorageConnection",
+    "direction": "out" // Means this is an output binding
+}
+```
+
+### Binding Expressions
+
+A binding expression is specialized text in function.json, function parameters, or code that is evaluated when the function is invoked to yield a value.
+
+- App settings
+- Trigger file name
+- Trigger metadata
+- JSON payloads
+- New GUID
+- Current date and time
+
+Most expressions are identified by wrapping them in curly braces. However, app setting binding expressions are wrapped in percent signs rather than curly braces.
 
 ## Monitoring dashboard
 
