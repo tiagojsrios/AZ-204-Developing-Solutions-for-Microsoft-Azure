@@ -6,6 +6,8 @@ In a WebJob, you can create a custom retry policy for calls to external systems.
 
 A function app is a way to organize and collectively manage your functions. A function app is comprised of one or more individual functions that are managed together by Azure App Service. All the functions in a function app share the same pricing plan, continuous deployment, and runtime version.
 
+All of the functions in an app share a common set of configuration values, and must all be built for the same language runtime. Each function app is an Azure resource that can be configured and managed independently.
+
 ## Stateless logic
 
 Stateless functions are great candidates for serverless compute; function instances are created and destroyed on demand. If state is required, it can be stored in an associated storage service.
@@ -128,3 +130,17 @@ samples-workitems/{name}.png
 ```
 
 The last significant piece of information with this concept is the text name. The name represents a parameter in your Azure function that receives the name of the added file. For example, if we upload a file named resume.txt, my Azure function receives that value as a string through a parameter called name.
+
+## Functions Core Tools
+
+The Core Tools are packaged as a single command-line utility named *func*. The Core Tools feature a variety of functions-related capabilities, but their primary purpose is to:
+
+1. Generate the files and folders you need to develop functions on your local computer;
+2. Run your functions locally so you can test and debug them;
+3. Publish your functions to Azure.
+
+Some common Core Tools commands that you can run in the command line:
+- **func init**: Creates an Azure Function project, therefore it's a collection of one or more Azure Functions developed with the same runtime language. It represents a Function App on Azure.
+- **func new**: Creates an Azure Function associated to the project that exists in the directory where the command is being used.
+- **func start**: Allows the developer to run the Azure Function locally.
+- **func azure functionapp publish <app_name>**: Publishes the Azure Function to Azure Cloud, where *<app_name>* represents the Function App.
