@@ -9,3 +9,4 @@ https://docs.microsoft.com/en-us/learn/certifications/exams/az-204
 3. [Power Automate](PowerAutomate/README.md)
 4. [Serverless](Serverless/README.md)
 5. [WebJobs](WebJobs/README.md)
+5. [SignalR](SignalR/README.md)
