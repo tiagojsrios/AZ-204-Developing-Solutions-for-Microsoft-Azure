@@ -9,4 +9,10 @@ https://docs.microsoft.com/en-us/learn/certifications/exams/az-204
 3. [Power Automate](PowerAutomate/README.md)
 4. [Serverless](Serverless/README.md)
 5. [WebJobs](WebJobs/README.md)
-5. [SignalR](SignalR/README.md)
+6. [SignalR](SignalR/README.md)
+7. [Messages](Messages/README.md)
+8. Communication
+   1. [Event Grid](Communication/Event%20Grid/README.md)
+   2. [Event Hub](Communication/Event%20Hub/README.md)
+   3. [Events & Messages](Communication/Events%20&%20Messages/README.md)
+   4. [Queues](Communication/Queues/README.md) 
