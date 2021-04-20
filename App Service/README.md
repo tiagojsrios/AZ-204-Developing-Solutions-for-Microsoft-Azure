@@ -1,6 +1,6 @@
 # Azure App Service
 
-Azure App Service is a service for hosting web applications, REST APIs, and backend services. App Service is ideal for most websites, particularly if you don't need tight control over the hosting infrastructure.
+Azure App Service is a service for hosting web applications, REST APIs, and backend services. App Service is ideal for most websites, particularly if you don't need tight control over the hosting infrastructure. App Service can arrange for multiple instances of the web app to run and will load balance incoming requests across these instances.
 
 ## App Service Plan
 
@@ -39,3 +39,15 @@ To help you discover problems before your app goes live into production, Azure A
 - **Phase 1:** Slot settings from the target slot are applied to the web app in the source slot. Then Azure warms up the staging slot. At this point, the swap operation pauses so you can test the app in the source slot to make sure it works with the target slot configuration. If you find no problems, begin the next phase.
 
 - **Phase 2:** The hostnames for the two sites are swapped. The version of the app now in the source slot receives its slot settings.
+
+## Scale Out a Web App
+
+If you select an existing plan, any other web apps that use the same plan will share resources with your web app. They'll all scale together, so they need to have the same scaling requirements. If your apps have different requirements, use a separate App Service plan for each one.
+
+The key to scaling effectively is knowing when to scale, and by how much. You monitor the performance of a web app by using the metrics available for the App Service. The simplest way to do this is to use the Azure portal. If you notice a steady increase in resource use, such as CPU utilization, memory occupancy, or disk queue length, you should consider scaling out before these metrics hit a critical point. You should also monitor the average response time of requests and the number of failing requests.
+
+## Scale Up a Web App
+
+You scale an App Service plan up and down by changing the pricing tier and hardware level that it runs on. You can start with the Free tier and scale up as needed according to your requirements. This process is manual. You can also scale down again if you no longer need the resources associated with a particular tier.
+
+Scaling up can cause an interruption in service to client apps running at the time. They might need to disconnect from the service and reconnect if the scale-up occurs during an active call to the web app. And new connections might be rejected until scaling finishes. Also, scaling up can cause the outgoing IP addresses for the web app to change.
