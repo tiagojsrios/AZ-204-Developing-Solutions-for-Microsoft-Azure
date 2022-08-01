@@ -1,6 +1,8 @@
 # AZ-204: Developing Solutions for Microsoft Azure
 
-https://docs.microsoft.com/en-us/learn/certifications/exams/az-204
+I created this repository while studying for AZ-204 exam. Please have in mind this might get outdated, as I will not maintain the repository. Also, 99% of the content was copied from Microsoft Learn documentation. Therefore, **DO NOT** expect to find different content here.
+
+Microsoft Exam Page: https://docs.microsoft.com/en-us/learn/certifications/exams/az-204
 
 ## Microsoft Learn
 1. [Functions](Functions/README.md)
